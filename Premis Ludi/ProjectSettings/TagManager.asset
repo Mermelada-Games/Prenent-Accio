@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fish
   - Trash
+  - Food
+  - FoodMerge
   layers:
   - Default
   - TransparentFX
