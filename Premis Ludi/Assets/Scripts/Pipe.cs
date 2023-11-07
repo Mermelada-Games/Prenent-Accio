@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Pipe : MonoBehaviour
 {
-    [SerializeField] private float correctRotation = 0;
+    [SerializeField] private float[] correctRotations;
     private float rotationStep = 60.0f;
-
     public bool isCorrectRotation = false;
-
     private bool isMouseOver = false;
+
+    private void Start()
+    {
+        VerifyRotation();
+    }
 
     private void OnMouseEnter()
     {
@@ -32,16 +35,22 @@ public class Pipe : MonoBehaviour
     private void Rotate()
     {
         transform.Rotate(new Vector3(0, 0, -rotationStep));
-        float currentRotation = NormalizeAngle(transform.eulerAngles.z);
-        float correctedRotation = NormalizeAngle(correctRotation);
+        VerifyRotation();
+    }
 
-        if (Mathf.Approximately(currentRotation, correctedRotation))
+    private void VerifyRotation()
+    {
+        float currentRotation = NormalizeAngle(transform.eulerAngles.z);
+
+        isCorrectRotation = false;
+
+        foreach (float correctedRotation in correctRotations)
         {
-            isCorrectRotation = true;
-        }
-        else
-        {
-            isCorrectRotation = false;
+            if (Mathf.Approximately(currentRotation, NormalizeAngle(correctedRotation)) || Mathf.Approximately(currentRotation, 360.0f))
+            {
+                isCorrectRotation = true;
+                break;
+            }
         }
     }
 
