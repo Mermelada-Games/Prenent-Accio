@@ -10,6 +10,7 @@ public class FoodMerge : MonoBehaviour
     private GameObject[] foodMergeObjects;
     private GameObject lastFoodMergeObject;
     private bool creation = false;
+    private int sortingOrder = 1;
 
     private void Start()
     {
@@ -21,11 +22,15 @@ public class FoodMerge : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            int foodLayerMask = 1 << LayerMask.NameToLayer("Food");
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100f, foodLayerMask);
+
             if (hit.collider != null && hit.collider.CompareTag("Food"))
             {
                 selectedFood = hit.collider.GetComponent<Food>();
                 selectedFood.isDragging = true;
+                sortingOrder++;
+                selectedFood.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
             }
         }
 
@@ -41,7 +46,7 @@ public class FoodMerge : MonoBehaviour
                     {
                         for (int i = 0; i < foodMergeObjects.Length; i++)
                         {
-                            if (collider.gameObject == foodMergeObjects[i].gameObject)
+                            if (collider.gameObject == foodMergeObjects[i].gameObject && foodType[i] == null)
                             {
                                 foodType[i] = selectedFood.foodType;
 
@@ -51,41 +56,78 @@ public class FoodMerge : MonoBehaviour
                                 selectedFood.mergeIdx = i;
                                 lastFoodMergeObject = collider.gameObject;
 
+                                selectedFood.transform.position = collider.transform.position;
+                                break;
+                            }
+                            else if (collider.gameObject == foodMergeObjects[i].gameObject && foodType[i] != null)
+                            {
+                                if (selectedFood.mergeIdx == i)
+                                { 
+                                    selectedFood.transform.position = collider.transform.position;
+                                    break;
+                                }
+                                else 
+                                {                               
+                                    Reset();
+                                }
                             }
                         }
-
-                        selectedFood.transform.position = collider.transform.position;
-                        break;
                     }
-                }
-
-                bool creationTemp = true;
-                for (int i = 0; i < foodMergeObjects.Length; i++)
-                {
-                    if (foodType[i] == null || foodType[i] != "Wheat")
+                    else if (collider.CompareTag("Food") && collider != selectedFood.GetComponent<Collider2D>())
                     {
-                        creationTemp = false;
-                        break;
+                        Reset();
                     }
                 }
-                creation = creationTemp;
+                TryCreateBread();
             }
-            else
-            {
-                if (selectedFood.mergeIdx != -1) foodType[selectedFood.mergeIdx] = null;
-                selectedFood.ResetInitialPosition();
-            }
+            else Reset();
 
-            if (creation)
-            {
-                Debug.Log("Bread");
-
-                creation = false;
-            }
+            if (creation) Creation();
 
             selectedFood.isDragging = false;
+            selectedFood.GetComponent<SpriteRenderer>().sortingOrder = 1;
             selectedFood = null;
             Debug.Log("food1:" + foodType[0] + "    food2:" + foodType[1] + "   food3:" + foodType[2]);
         }
+    }
+
+    private void TryCreateBread()
+    {
+        bool creationTemp = true;
+        for (int i = 0; i < foodMergeObjects.Length; i++)
+        {
+            if (foodType[i] == null || foodType[i] != "Wheat")
+            {
+                creationTemp = false;
+                break;
+            }
+        }
+        creation = creationTemp;
+    }
+
+    private void Creation()
+    {
+        Debug.Log("Bread");
+        GameObject[] foodObjects = GameObject.FindGameObjectsWithTag("Food");
+        foreach (GameObject foodObject in foodObjects)
+        {
+            Food foodComponent = foodObject.GetComponent<Food>();
+            if (foodComponent != null && foodComponent.foodType == "Wheat" && foodComponent.mergeIdx != -1)
+            {
+                Destroy(foodObject);
+            }
+        }
+
+        for (int i = 0; i < foodMergeObjects.Length; i++)
+        {
+            foodType[i] = null;
+        }
+        creation = false;
+    }
+
+    private void Reset()
+    {
+        if (selectedFood.mergeIdx != -1) foodType[selectedFood.mergeIdx] = null;
+        selectedFood.ResetInitialPosition();
     }
 }

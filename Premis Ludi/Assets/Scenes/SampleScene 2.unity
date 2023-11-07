@@ -316,7 +316,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.07971394, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -611,7 +611,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.07971394, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 771029653}
   - component: {fileID: 771029652}
   - component: {fileID: 771029651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Food (2)
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -853,7 +853,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.57236785, b: 0, a: 1}
   m_FlipX: 0
@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 874547057}
   - component: {fileID: 874547056}
   - component: {fileID: 874547055}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Food (3)
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.57236785, b: 0, a: 1}
   m_FlipX: 0
@@ -1201,7 +1201,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.07971394, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -1226,7 +1226,7 @@ GameObject:
   - component: {fileID: 1005298753}
   - component: {fileID: 1005298752}
   - component: {fileID: 1005298756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Food
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -1345,7 +1345,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.57236785, b: 0, a: 1}
   m_FlipX: 0
@@ -1445,7 +1445,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1485,7 +1485,7 @@ GameObject:
   - component: {fileID: 1792838418}
   - component: {fileID: 1792838417}
   - component: {fileID: 1792838416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Food (1)
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -1620,7 +1620,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0.016951084, b: 1, a: 1}
   m_FlipX: 0
