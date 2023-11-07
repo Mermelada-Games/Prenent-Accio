@@ -6,6 +6,8 @@ public class Food : MonoBehaviour
 {
     [SerializeField] public string foodType;
     public bool isDragging = false;
+    public int mergeIdx;
+    public int lastIdx;
     private Vector3 initialPosition;
 
     private void Start()
@@ -25,5 +27,6 @@ public class Food : MonoBehaviour
     public void ResetInitialPosition()
     {
         transform.position = initialPosition;
+        mergeIdx = -1;
     }
 }

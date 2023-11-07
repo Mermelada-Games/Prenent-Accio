@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class FoodMerge : MonoBehaviour
 {
-    private string foodType;
+    private string[] foodType;
     private Food selectedFood;
+    private Food lastSelectedFood;
     private GameObject[] foodMergeObjects;
+    private GameObject lastFoodMergeObject;
+    private bool creation = false;
 
     private void Start()
     {
         foodMergeObjects = GameObject.FindGameObjectsWithTag("FoodMerge");
+        foodType = new string[foodMergeObjects.Length];
     }
 
     private void Update()
@@ -35,22 +39,53 @@ public class FoodMerge : MonoBehaviour
                 {
                     if (collider.CompareTag("FoodMerge") && collider != selectedFood.GetComponent<Collider2D>())
                     {
+                        for (int i = 0; i < foodMergeObjects.Length; i++)
+                        {
+                            if (collider.gameObject == foodMergeObjects[i].gameObject)
+                            {
+                                foodType[i] = selectedFood.foodType;
+
+                                if (selectedFood.mergeIdx != -1 && selectedFood.mergeIdx != i) foodType[selectedFood.mergeIdx] = null;
+
+                                lastSelectedFood = selectedFood;
+                                selectedFood.mergeIdx = i;
+                                lastFoodMergeObject = collider.gameObject;
+
+                            }
+                        }
+
                         selectedFood.transform.position = collider.transform.position;
                         break;
                     }
-                    else
+                }
+
+                bool creationTemp = true;
+                for (int i = 0; i < foodMergeObjects.Length; i++)
+                {
+                    if (foodType[i] == null || foodType[i] != "Wheat")
                     {
-                        selectedFood.ResetInitialPosition();
+                        creationTemp = false;
+                        break;
                     }
                 }
+                creation = creationTemp;
             }
             else
             {
+                if (selectedFood.mergeIdx != -1) foodType[selectedFood.mergeIdx] = null;
                 selectedFood.ResetInitialPosition();
+            }
+
+            if (creation)
+            {
+                Debug.Log("Bread");
+
+                creation = false;
             }
 
             selectedFood.isDragging = false;
             selectedFood = null;
+            Debug.Log("food1:" + foodType[0] + "    food2:" + foodType[1] + "   food3:" + foodType[2]);
         }
     }
 }
