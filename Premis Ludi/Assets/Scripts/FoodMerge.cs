@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class FoodMerge : MonoBehaviour
 {
+    [SerializeField] private GameObject prefabToSpawn;
+
+    [SerializeField] private int rows = 4;
+    [SerializeField] private int columns = 4;
+    [SerializeField] private float spacing = 20f;
+    [SerializeField] private Vector3 gridStartPosition;
+
     private string[] foodType;
     private Food selectedFood;
     private Food lastSelectedFood;
@@ -11,11 +18,15 @@ public class FoodMerge : MonoBehaviour
     private GameObject lastFoodMergeObject;
     private bool creation = false;
     private int sortingOrder = 1;
+    public bool[] gridPositionFree;
+    public Vector3[] gridPositions;
 
     private void Start()
     {
         foodMergeObjects = GameObject.FindGameObjectsWithTag("FoodMerge");
         foodType = new string[foodMergeObjects.Length];
+        gridPositionFree = new bool[rows * columns];
+        gridPositions = GenerateGridPositions(rows, columns, spacing, gridStartPosition);
     }
 
     private void Update()
@@ -54,6 +65,7 @@ public class FoodMerge : MonoBehaviour
 
                                 lastSelectedFood = selectedFood;
                                 selectedFood.mergeIdx = i;
+                                selectedFood.positionIdx = -1;
                                 lastFoodMergeObject = collider.gameObject;
 
                                 selectedFood.transform.position = collider.transform.position;
@@ -73,7 +85,7 @@ public class FoodMerge : MonoBehaviour
                             }
                         }
                     }
-                    else if (collider.CompareTag("Food") && collider != selectedFood.GetComponent<Collider2D>())
+                    else if (collider.CompareTag("Food") && collider != selectedFood.GetComponent<Collider2D>() && collider.GetComponent<Food>().mergeIdx == -1)
                     {
                         Reset();
                     }
@@ -118,6 +130,9 @@ public class FoodMerge : MonoBehaviour
             }
         }
 
+        GameObject newFoodObject = Instantiate(prefabToSpawn, new Vector3(6, 0, 0), Quaternion.identity);
+
+
         for (int i = 0; i < foodMergeObjects.Length; i++)
         {
             foodType[i] = null;
@@ -130,4 +145,40 @@ public class FoodMerge : MonoBehaviour
         if (selectedFood.mergeIdx != -1) foodType[selectedFood.mergeIdx] = null;
         selectedFood.ResetInitialPosition();
     }
+
+    private Vector3[] GenerateGridPositions(int rows, int columns, float spacing, Vector3 start)
+    {
+        Vector3[] positions = new Vector3[rows * columns];
+        gridPositionFree = new bool[rows * columns];
+
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < columns; col++)
+            {
+                int index = row * columns + col;
+                float x = start.x + col * spacing;
+                float y = start.y - row * spacing;
+                positions[index] = new Vector3(x, y, 0);
+                gridPositionFree[index] = true;
+            }
+        }
+        return positions;
+    }
+
+    public Vector3 GetFirstFreePosition(Food food)
+    {
+        Debug.Log(gridPositionFree.Length);
+        for (int i = 0; i < gridPositionFree.Length; i++)
+        {
+            if (gridPositionFree[i])
+            {
+                gridPositionFree[i] = false;
+                food.positionIdx = i;
+                return gridPositions[i];
+            }
+        }
+        
+        return Vector3.zero;
+    }
+
 }
