@@ -90,11 +90,8 @@ public class FoodMerge : MonoBehaviour
                         Reset();
                     }
                 }
-                TryCreateBread();
             }
             else Reset();
-
-            if (creation) Creation();
 
             selectedFood.isDragging = false;
             selectedFood.GetComponent<SpriteRenderer>().sortingOrder = 1;
@@ -103,7 +100,7 @@ public class FoodMerge : MonoBehaviour
         }
     }
 
-    private void TryCreateBread()
+    public  void TryCreateBread()
     {
         bool creationTemp = true;
         for (int i = 0; i < foodMergeObjects.Length; i++)
@@ -115,6 +112,7 @@ public class FoodMerge : MonoBehaviour
             }
         }
         creation = creationTemp;
+        if (creation) Creation();
     }
 
     private void Creation()

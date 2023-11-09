@@ -522,8 +522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 2439773058800576617, guid: f751497eac738414fbfa9899d6dfc48a, type: 3}
-  rows: 8
-  columns: 2
+  rows: 2
+  columns: 8
   spacing: 2
   gridStartPosition: {x: -7, y: -2, z: 0}
   gridPositionFree: 
