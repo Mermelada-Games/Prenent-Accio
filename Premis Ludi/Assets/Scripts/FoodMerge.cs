@@ -26,7 +26,7 @@ public class FoodMerge : MonoBehaviour
     private bool creation = false;
     private int sortingOrder = 1;
     public bool[] gridPositionFree;
-    public Vector3[] gridPositions;
+    private Vector3[] gridPositions;
 
     private void Start()
     {
@@ -114,6 +114,15 @@ public class FoodMerge : MonoBehaviour
                     else if (collider.CompareTag("Food") && collider != selectedFood.GetComponent<Collider2D>() && collider.GetComponent<Food>().mergeIdx == -1)
                     {
                         Reset();
+                    }
+                    else if (collider.CompareTag("Person") && collider != selectedFood.GetComponent<Collider2D>())
+                    {
+                        if (selectedFood.foodType == "Bread")
+                        {
+                            collider.GetComponent<Person>().breadQuantity--;
+                            Destroy(selectedFood.gameObject);
+                        }
+                        else Reset();
                     }
                 }
             }

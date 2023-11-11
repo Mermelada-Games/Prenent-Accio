@@ -8,6 +8,7 @@ TagManager:
   - Trash
   - Food
   - FoodMerge
+  - Person
   layers:
   - Default
   - TransparentFX
