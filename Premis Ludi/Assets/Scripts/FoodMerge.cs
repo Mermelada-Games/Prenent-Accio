@@ -119,7 +119,8 @@ public class FoodMerge : MonoBehaviour
                     {
                         if (selectedFood.foodType == "Bread")
                         {
-                            collider.GetComponent<Person>().breadQuantity--;
+                            collider.GetComponent<Person>().breadQuantity++;
+                            collider.GetComponent<Person>().UpdateText();
                             Destroy(selectedFood.gameObject);
                         }
                         else Reset();
