@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class FoodMerge : MonoBehaviour
 {
+    [Header("Prefabs")]
+    [SerializeField] private GameObject wheatPrefab;
+    [SerializeField] private GameObject waterPrefab;
     [SerializeField] private GameObject prefabToSpawn;
+    [SerializeField] private int wheatQuantity = 0;
+    [SerializeField] private int waterQuantity = 0;
 
+    [Header("Grid")]
     [SerializeField] private int rows = 4;
     [SerializeField] private int columns = 4;
     [SerializeField] private float spacing = 20f;
@@ -27,6 +34,25 @@ public class FoodMerge : MonoBehaviour
         foodType = new string[foodMergeObjects.Length];
         gridPositionFree = new bool[rows * columns];
         gridPositions = GenerateGridPositions(rows, columns, spacing, gridStartPosition);
+
+        List<GameObject> instances = new List<GameObject>();
+
+        for (int i = 0; i < wheatQuantity; i++)
+        {
+            instances.Add(wheatPrefab);
+        }
+
+        for (int i = 0; i < waterQuantity; i++)
+        {
+            instances.Add(waterPrefab);
+        }
+
+        instances = instances.OrderBy(item => Random.value).ToList();
+
+        foreach (GameObject instancePrefab in instances)
+        {
+            Instantiate(instancePrefab, Vector3.zero, Quaternion.identity);
+        }
     }
 
     private void Update()
