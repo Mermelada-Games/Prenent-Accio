@@ -27,9 +27,11 @@ public class FoodMerge : MonoBehaviour
     private int sortingOrder = 1;
     public bool[] gridPositionFree;
     private Vector3[] gridPositions;
+    private Timer timer;
 
     private void Start()
     {
+        timer = FindObjectOfType<Timer>();
         foodMergeObjects = GameObject.FindGameObjectsWithTag("FoodMerge");
         foodType = new string[foodMergeObjects.Length];
         gridPositionFree = new bool[rows * columns];
@@ -134,6 +136,12 @@ public class FoodMerge : MonoBehaviour
             selectedFood = null;
             Debug.Log("food1:" + foodType[0] + "    food2:" + foodType[1] + "   food3:" + foodType[2]);
         }
+
+        if (timer.timeOver)
+        {
+            timer.timeOver = false;
+            ShowResults();
+        }
     }
 
     public  void TryCreateBread()
@@ -213,6 +221,22 @@ public class FoodMerge : MonoBehaviour
         }
         
         return Vector3.zero;
+    }
+
+    private void ShowResults()
+    {
+        bool allObjectivesCompleted = true;
+        foreach(Person person in FindObjectsOfType<Person>())
+        {
+            person.Complete();
+            if (!person.objectiveCompleted)
+            {
+                allObjectivesCompleted = false;
+                break;
+            }
+        }
+        if (allObjectivesCompleted) Debug.Log("You win!");
+        else Debug.Log("You lose!");
     }
 
 }
