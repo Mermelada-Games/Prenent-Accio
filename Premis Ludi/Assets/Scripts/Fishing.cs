@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using TMPro;
 
 public class Fishing : MonoBehaviour
 {
     [SerializeField] private GameObject fishingRod;
-    [SerializeField] private GameObject camera;
     [SerializeField] private Hook hook;
     [SerializeField] private float speed = 3.0f;
     [SerializeField] private float darkeningSpeed = 0.1f;
     [SerializeField] private float lighteningSpeed = 0.3f;
     [SerializeField] private float descentSpeed = 1.0f;
     [SerializeField] private float ascentSpeed = 3.0f;
+    [SerializeField] private TextMeshProUGUI fishCountText;
+    [SerializeField] private TextMeshProUGUI trashCountText;
 
     private bool isDragging = false;
     private bool isDescending = true;
     private Material waterMaterial;
     private Color originalColor;
+    private float positionY = 0;
 
     private void Start()
     {
@@ -58,15 +62,23 @@ public class Fishing : MonoBehaviour
         if (isDescending)
         {
             fishingRod.transform.Translate(Vector3.down * descentSpeed * Time.deltaTime);
-            camera.transform.Translate(Vector3.down * descentSpeed * Time.deltaTime);
+            Camera.main.transform.Translate(Vector3.down * descentSpeed * Time.deltaTime);
             waterMaterial.color = Color.Lerp(waterMaterial.color, Color.black, darkeningSpeed * Time.deltaTime);
+            positionY -= descentSpeed;
         }
-        else
+        else if (positionY < 0)
         {
             fishingRod.transform.Translate(Vector3.up * ascentSpeed * Time.deltaTime);
-            camera.transform.Translate(Vector3.up * ascentSpeed * Time.deltaTime);
+            Camera.main.transform.Translate(Vector3.up * ascentSpeed * Time.deltaTime);
             waterMaterial.color = Color.Lerp(waterMaterial.color, originalColor, lighteningSpeed * Time.deltaTime);
+            positionY += ascentSpeed;
         }
+
     }
 
+    public void UpdateText()
+    {
+        fishCountText.SetText("Fish: " + hook.fishCount);
+        trashCountText.SetText("Trash: " + hook.trashCount);
+    }
 }

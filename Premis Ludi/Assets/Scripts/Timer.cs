@@ -4,7 +4,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    private float totalTime = 10f;
+    [SerializeField] private float totalTime = 60f;
     private float currentTime;
     private TextMeshProUGUI timerText;
     public bool timeOver = false;

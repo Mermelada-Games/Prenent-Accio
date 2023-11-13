@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8356815080916816362}
   - component: {fileID: 5324520225649669428}
   m_Layer: 6
-  m_Name: Wheat
+  m_Name: Flour
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c34362f6ab48f1b45a1404100ac01b4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44998e1ebce277447965e8a6f43cdb9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad5f7de41cc95a48a05774fcadae675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodType: Wheat
+  foodType: Flour
   isDragging: 0
   mergeIdx: -1
   positionIdx: 0

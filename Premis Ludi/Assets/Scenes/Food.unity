@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 319830657}
         m_TargetAssemblyTypeName: FoodMerge, Assembly-CSharp
-        m_MethodName: TryCreateBread
+        m_MethodName: TryCreate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -623,6 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc1aefed042d2f4c93117147d6a9e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalTime: 60
   timeOver: 0
 --- !u!1 &519420028
 GameObject:
@@ -1267,6 +1268,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
+      propertyPath: breadPrefab
+      value: 
+      objectReference: {fileID: 2439773058800576617, guid: f751497eac738414fbfa9899d6dfc48a, type: 3}
+    - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
+      propertyPath: flourPrefab
+      value: 
+      objectReference: {fileID: 887720614006831192, guid: fe3eab246d4dc8e428cc5642dc06ad34, type: 3}
+    - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: waterPrefab
       value: 
       objectReference: {fileID: 912814417937227470, guid: bc3893852bcd88147a2314ab65fac6ec, type: 3}
@@ -1276,11 +1285,11 @@ PrefabInstance:
       objectReference: {fileID: 887720614006831192, guid: ad04f1499abef974bbbfdf9f2c1261d3, type: 3}
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: waterQuantity
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: wheatQuantity
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6534589560316846403, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: m_RootOrder
