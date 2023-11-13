@@ -982,6 +982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotations:
   - 0
+  - 180
   isCorrectRotation: 0
 --- !u!212 &311286102
 SpriteRenderer:
@@ -2415,8 +2416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - -60
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &676454110
 SpriteRenderer:
@@ -2496,14 +2496,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781671755}
-  m_LocalRotation: {x: 0, y: 0, z: 0.5, w: 0.8660254}
-  m_LocalPosition: {x: -0.6700001, y: 1.7300003, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.12, y: 0.95000005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1377450717}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 60}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &781671757
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2569,6 +2569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotations:
   - 60
+  - -180
   isCorrectRotation: 0
 --- !u!212 &781671759
 SpriteRenderer:
@@ -3257,7 +3258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991549782}
   m_LocalRotation: {x: 0, y: 0, z: 0.5, w: 0.8660254}
-  m_LocalPosition: {x: -1.1199999, y: 0.9500003, z: 0}
+  m_LocalPosition: {x: -0.6700001, y: 1.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3327,8 +3328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - 60
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &991549786
 SpriteRenderer:
@@ -4405,8 +4405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - 0
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &1671443786
 SpriteRenderer:
@@ -5165,8 +5164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - -180
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &1834939970
 SpriteRenderer:
@@ -5361,7 +5359,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dc411b4b6b380714aafe051e6077af5f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e378b5ac8a148a40b2170dbbd856def, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5621,8 +5619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - -180
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &1905622841
 SpriteRenderer:
@@ -5925,8 +5922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - -120
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &2076342399
 SpriteRenderer:
@@ -6077,8 +6073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - 60
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &2123198931
 SpriteRenderer:

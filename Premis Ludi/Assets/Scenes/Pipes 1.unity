@@ -372,8 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - -120
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &264254660
 SpriteRenderer:
@@ -1953,8 +1952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - -120
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &1671470947
 SpriteRenderer:
@@ -2865,8 +2863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd46b1924b609e34bb5a73a1f1f442e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctRotations:
-  - -120
+  correctRotations: []
   isCorrectRotation: 0
 --- !u!212 &2076342399
 SpriteRenderer:
