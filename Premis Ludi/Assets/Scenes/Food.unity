@@ -1268,6 +1268,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
+      propertyPath: milkPrefab
+      value: 
+      objectReference: {fileID: 912814417937227470, guid: bc3893852bcd88147a2314ab65fac6ec, type: 3}
+    - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: breadPrefab
       value: 
       objectReference: {fileID: 2439773058800576617, guid: f751497eac738414fbfa9899d6dfc48a, type: 3}
@@ -1283,6 +1287,14 @@ PrefabInstance:
       propertyPath: wheatPrefab
       value: 
       objectReference: {fileID: 887720614006831192, guid: ad04f1499abef974bbbfdf9f2c1261d3, type: 3}
+    - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
+      propertyPath: cheesePrefab
+      value: 
+      objectReference: {fileID: 2439773058800576617, guid: 6cdc4994084145c4d96603518950dc9d, type: 3}
+    - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
+      propertyPath: milkQuantity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: waterQuantity
       value: 0

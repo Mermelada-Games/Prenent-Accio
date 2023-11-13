@@ -11,6 +11,7 @@ public class Pipe : MonoBehaviour
 
     private void Start()
     {
+        transform.Rotate(new Vector3(0, 0, Random.Range(0, 6) * rotationStep));
         VerifyRotation();
     }
 

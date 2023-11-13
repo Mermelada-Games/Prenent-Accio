@@ -7,11 +7,12 @@ public class FoodMerge : MonoBehaviour
 {
     [Header("Prefabs")]
     [SerializeField] private GameObject wheatPrefab;
-    [SerializeField] private GameObject waterPrefab;
+    [SerializeField] private GameObject milkPrefab;
     [SerializeField] private GameObject flourPrefab;
     [SerializeField] private GameObject breadPrefab;
+    [SerializeField] private GameObject cheesePrefab;
     [SerializeField] private int wheatQuantity = 0;
-    [SerializeField] private int waterQuantity = 0;
+    [SerializeField] private int milkQuantity = 0;
 
     [Header("Grid")]
     [SerializeField] private int rows = 4;
@@ -26,6 +27,7 @@ public class FoodMerge : MonoBehaviour
     private GameObject lastFoodMergeObject;
     private bool createBread = false;
     private bool createFlour = false;
+    private bool createCheese = false;
     private int sortingOrder = 1;
     public bool[] gridPositionFree;
     private Vector3[] gridPositions;
@@ -46,9 +48,9 @@ public class FoodMerge : MonoBehaviour
             instances.Add(wheatPrefab);
         }
 
-        for (int i = 0; i < waterQuantity; i++)
+        for (int i = 0; i < milkQuantity; i++)
         {
-            instances.Add(waterPrefab);
+            instances.Add(milkPrefab);
         }
 
         instances = instances.OrderBy(item => Random.value).ToList();
@@ -149,7 +151,6 @@ public class FoodMerge : MonoBehaviour
     public void TryCreate()
     {
         bool creationTemp = true;
-
         for (int i = 0; i < foodMergeObjects.Length; i++)
         {
             if (foodType[i] == null || foodType[i] != "Flour")
@@ -162,7 +163,6 @@ public class FoodMerge : MonoBehaviour
         if (createBread) CreateBread();
 
         creationTemp = true;
-
         for (int i = 0; i < foodMergeObjects.Length; i++)
         {
             if (foodType[i] == null || foodType[i] != "Wheat")
@@ -173,6 +173,18 @@ public class FoodMerge : MonoBehaviour
         }
         createFlour = creationTemp;
         if (createFlour) CreateFlour();
+
+        creationTemp = true;
+        for (int i = 0; i < foodMergeObjects.Length; i++)
+        {
+            if (foodType[i] == null || foodType[i] != "Milk")
+            {
+                creationTemp = false;
+                break;
+            }
+        }
+        createCheese = creationTemp;
+        if (createCheese) CreateCheese();
     }
 
     private void CreateBread()
@@ -211,6 +223,28 @@ public class FoodMerge : MonoBehaviour
         }
 
         GameObject newFoodObject = Instantiate(flourPrefab, Vector3.zero, Quaternion.identity);
+
+        for (int i = 0; i < foodMergeObjects.Length; i++)
+        {
+            foodType[i] = null;
+        }
+        createFlour = false;
+    }
+
+    private void CreateCheese()
+    {
+        Debug.Log("Cheese");
+        GameObject[] foodObjects = GameObject.FindGameObjectsWithTag("Food");
+        foreach (GameObject foodObject in foodObjects)
+        {
+            Food foodComponent = foodObject.GetComponent<Food>();
+            if (foodComponent != null && foodComponent.foodType == "Milk" && foodComponent.mergeIdx != -1)
+            {
+                Destroy(foodObject);
+            }
+        }
+
+        GameObject newFoodObject = Instantiate(cheesePrefab, Vector3.zero, Quaternion.identity);
 
         for (int i = 0; i < foodMergeObjects.Length; i++)
         {
