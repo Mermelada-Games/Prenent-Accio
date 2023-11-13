@@ -40,6 +40,12 @@ public class Pipe : MonoBehaviour
 
     private void VerifyRotation()
     {
+        if (correctRotations.Length == 0)
+        {
+            isCorrectRotation = true;
+            return;
+        }
+
         float currentRotation = NormalizeAngle(transform.eulerAngles.z);
 
         isCorrectRotation = false;
@@ -52,6 +58,7 @@ public class Pipe : MonoBehaviour
                 break;
             }
         }
+
     }
 
     private float NormalizeAngle(float angle)

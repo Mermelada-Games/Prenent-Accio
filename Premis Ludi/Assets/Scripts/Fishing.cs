@@ -15,15 +15,18 @@ public class Fishing : MonoBehaviour
     [SerializeField] private float ascentSpeed = 3.0f;
     [SerializeField] private TextMeshProUGUI fishCountText;
     [SerializeField] private TextMeshProUGUI trashCountText;
+    [SerializeField] private GameObject image;
 
     private bool isDragging = false;
     private bool isDescending = true;
     private Material waterMaterial;
     private Color originalColor;
     private float positionY = 0;
+    private Timer timer;
 
     private void Start()
     {
+        timer = FindObjectOfType<Timer>();
         waterMaterial = fishingRod.GetComponent<Renderer>().material;
         originalColor = waterMaterial.color;
     }
@@ -74,6 +77,11 @@ public class Fishing : MonoBehaviour
             positionY += ascentSpeed;
         }
 
+        if (timer.timeOver)
+        {
+            if (!image.activeSelf) image.SetActive(true);
+        }
+
     }
 
     public void UpdateText()
@@ -81,4 +89,5 @@ public class Fishing : MonoBehaviour
         fishCountText.SetText("Fish: " + hook.fishCount);
         trashCountText.SetText("Trash: " + hook.trashCount);
     }
+
 }
