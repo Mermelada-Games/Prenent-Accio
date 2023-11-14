@@ -8,9 +8,11 @@ public class Pipe : MonoBehaviour
     private float rotationStep = 60.0f;
     public bool isCorrectRotation = false;
     private bool isMouseOver = false;
+    private PipesManager pipesManager;
 
     private void Start()
     {
+        pipesManager = FindObjectOfType<PipesManager>();
         transform.Rotate(new Vector3(0, 0, Random.Range(0, 6) * rotationStep));
         VerifyRotation();
     }
@@ -29,7 +31,7 @@ public class Pipe : MonoBehaviour
     {
         if (isMouseOver && Input.GetMouseButtonDown(0))
         {
-            Rotate();
+            if (!pipesManager.hasWon) Rotate();
         }
     }
 

@@ -141,6 +141,7 @@ public class FoodMerge : MonoBehaviour
                     }
                 }
                 TryCreate();
+                ShowResults();
             }
             else Reset();
 
@@ -316,13 +317,13 @@ public class FoodMerge : MonoBehaviour
                 break;
             }
         }
-        if (allObjectivesCompleted) Debug.Log("You win!");
-        else Debug.Log("You lose!");
+        if (allObjectivesCompleted) StartCoroutine(EndGame());
     }
 
     private IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(6);
+        Debug.Log("EndGame");
+        yield return new WaitForSeconds(2);
         sceneSystem.ChangeScene();
     }
 

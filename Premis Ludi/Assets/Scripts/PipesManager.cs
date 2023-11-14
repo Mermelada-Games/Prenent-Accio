@@ -7,7 +7,7 @@ public class PipesManager : MonoBehaviour
     private Pipe[] pipes;
     private SceneSystem sceneSystem;
     private bool allPipesCorrect = false;
-    private bool hasWon = false;
+    public bool hasWon = false;
 
     private void Awake()
     {
@@ -40,7 +40,7 @@ public class PipesManager : MonoBehaviour
 
     private IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(2);
         sceneSystem.ChangeScene();
     }
 }
