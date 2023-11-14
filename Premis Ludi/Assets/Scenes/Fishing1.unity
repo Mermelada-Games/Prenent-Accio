@@ -2084,7 +2084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1240527891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2320,6 +2320,7 @@ MonoBehaviour:
   fishingRod: {fileID: 1940240304}
   hook: {fileID: 610340624}
   background: {fileID: 459576951}
+  background2: {fileID: 320168189}
   speed: 3
   darkeningSpeed: 0.05
   lighteningSpeed: 0.3
@@ -2347,7 +2348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1941405705
 RectTransform:
   m_ObjectHideFlags: 0

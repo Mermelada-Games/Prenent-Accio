@@ -134,6 +134,7 @@ public class FoodMerge : MonoBehaviour
                         else Reset();
                     }
                 }
+                TryCreate();
             }
             else Reset();
 

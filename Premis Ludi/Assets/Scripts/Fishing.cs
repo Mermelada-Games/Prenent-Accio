@@ -10,6 +10,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] private GameObject fishingRod;
     [SerializeField] private Hook hook;
     [SerializeField] private GameObject background;
+    [SerializeField] private GameObject background2;
     [SerializeField] private float speed = 3.0f;
     [SerializeField] private float darkeningSpeed = 0.1f;
     [SerializeField] private float lighteningSpeed = 0.3f;
@@ -24,7 +25,9 @@ public class Fishing : MonoBehaviour
     private bool isDescending = true;
     private bool hasReset = false;
     private Material waterMaterial;
+    private Material waterMaterial2;
     private Color originalColor;
+    private Color originalColor2;
     private float positionY = 0;
     private Timer timer;
     private SceneSystem sceneSystem;
@@ -36,7 +39,9 @@ public class Fishing : MonoBehaviour
         sceneSystem = FindObjectOfType<SceneSystem>();
         timer = FindObjectOfType<Timer>();
         waterMaterial = background.GetComponent<Renderer>().material;
+        waterMaterial2 = background2.GetComponent<Renderer>().material;
         originalColor = waterMaterial.color;
+        originalColor2 = waterMaterial.color;
         UpdateScoreText();
         positionY = fishingRod.transform.position.y;
     }
@@ -77,13 +82,15 @@ public class Fishing : MonoBehaviour
             fishingRod.transform.Translate(Vector3.down * descentSpeed * Time.deltaTime);
             Camera.main.transform.Translate(Vector3.down * descentSpeed * Time.deltaTime);
             waterMaterial.color = Color.Lerp(waterMaterial.color, Color.black, darkeningSpeed * Time.deltaTime);
+            waterMaterial2.color = Color.Lerp(waterMaterial2.color, Color.black, darkeningSpeed * Time.deltaTime);
+
         }
         else if (!isDescending && fishingRod.transform.position.y < positionY)
         {
             fishingRod.transform.Translate(Vector3.up * ascentSpeed * Time.deltaTime);
             Camera.main.transform.Translate(Vector3.up * ascentSpeed * Time.deltaTime);
             waterMaterial.color = Color.Lerp(waterMaterial.color, originalColor, lighteningSpeed * Time.deltaTime);
-
+            waterMaterial2.color = Color.Lerp(waterMaterial2.color, originalColor, lighteningSpeed * Time.deltaTime);
         }
         
         if (!hasReset && fishingRod.transform.position.y >= positionY && hook.isHooked)
