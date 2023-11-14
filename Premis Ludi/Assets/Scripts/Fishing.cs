@@ -19,6 +19,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] private TextMeshProUGUI fishCountText;
     [SerializeField] private TextMeshProUGUI trashCountText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
     [SerializeField] private GameObject image;
 
     private bool isDragging = false;
@@ -31,7 +32,7 @@ public class Fishing : MonoBehaviour
     private float positionY = 0;
     private Timer timer;
     private SceneSystem sceneSystem;
-    private bool levelCompleted = false;
+    private bool gameEnded = false;
 
     private void Start()
     {
@@ -76,35 +77,40 @@ public class Fishing : MonoBehaviour
             isDescending = false;
         }
 
-        if (isDescending)
+        if (!gameEnded)
         {
-            fishingRod.transform.Translate(Vector3.down * descentSpeed * Time.deltaTime);
-            Camera.main.transform.Translate(Vector3.down * descentSpeed * Time.deltaTime);
-            waterMaterial.color = Color.Lerp(waterMaterial.color, Color.black, darkeningSpeed * Time.deltaTime);
-            waterMaterial2.color = Color.Lerp(waterMaterial2.color, Color.black, darkeningSpeed * Time.deltaTime);
+            if (isDescending)
+            {
+                fishingRod.transform.Translate(Vector3.down * descentSpeed * Time.deltaTime);
+                Camera.main.transform.Translate(Vector3.down * descentSpeed * Time.deltaTime);
+                waterMaterial.color = Color.Lerp(waterMaterial.color, Color.black, darkeningSpeed * Time.deltaTime);
+                waterMaterial2.color = Color.Lerp(waterMaterial2.color, Color.black, darkeningSpeed * Time.deltaTime);
 
-        }
-        else if (!isDescending && fishingRod.transform.position.y < positionY)
-        {
-            fishingRod.transform.Translate(Vector3.up * ascentSpeed * Time.deltaTime);
-            Camera.main.transform.Translate(Vector3.up * ascentSpeed * Time.deltaTime);
-            waterMaterial.color = Color.Lerp(waterMaterial.color, originalColor, lighteningSpeed * Time.deltaTime);
-            waterMaterial2.color = Color.Lerp(waterMaterial2.color, originalColor, lighteningSpeed * Time.deltaTime);
+            }
+            else if (!isDescending && fishingRod.transform.position.y < positionY)
+            {
+                fishingRod.transform.Translate(Vector3.up * ascentSpeed * Time.deltaTime);
+                Camera.main.transform.Translate(Vector3.up * ascentSpeed * Time.deltaTime);
+                waterMaterial.color = Color.Lerp(waterMaterial.color, originalColor, lighteningSpeed * Time.deltaTime);
+                waterMaterial2.color = Color.Lerp(waterMaterial2.color, originalColor, lighteningSpeed * Time.deltaTime);
+            }
+            
+            if (!hasReset && fishingRod.transform.position.y >= positionY && hook.isHooked)
+            {
+                hasReset = true;
+                Debug.Log("Resetting");
+                StartCoroutine(RestartDescend());
+            }
         }
         
-        if (!hasReset && fishingRod.transform.position.y >= positionY && hook.isHooked)
-        {
-            hasReset = true;
-            Debug.Log("Resetting");
-            StartCoroutine(RestartDescend());
-        }
 
         if (timer.timeOver)
         {
             if (!image.activeSelf)
             {
                 image.SetActive(true);
-                if (hook.fishCount == 0 && hook.trashCount >= 1) levelCompleted = true;
+                UpdateFinalScoreText();
+                if (hook.fishCount == 0 && hook.trashCount >= 1) gameEnded = true;
                 StartCoroutine(EndGame());
             }
         }
@@ -135,6 +141,11 @@ public class Fishing : MonoBehaviour
         }
 
         sceneSystem.score = newScore;
+    }
+
+    private void UpdateFinalScoreText()
+    {
+        finalScoreText.SetText("Puntuació: " + sceneSystem.score);
     }
 
     private IEnumerator UpdateScoreProgressively(int currentScore, int targetScore, int step)
