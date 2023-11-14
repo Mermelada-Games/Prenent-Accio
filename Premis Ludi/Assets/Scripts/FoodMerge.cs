@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class FoodMerge : MonoBehaviour
 {
+    [SerializeField] private GameObject resultsImage;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
+
     [Header("Prefabs")]
     [SerializeField] private GameObject wheatPrefab;
     [SerializeField] private GameObject milkPrefab;
@@ -61,6 +66,8 @@ public class FoodMerge : MonoBehaviour
         {
             Instantiate(instancePrefab, Vector3.zero, Quaternion.identity);
         }
+
+        scoreText.SetText("Puntuació: " + sceneSystem.score);
     }
 
     private void Update()
@@ -218,6 +225,9 @@ public class FoodMerge : MonoBehaviour
             foodType[i] = null;
         }
         createBread = false;
+
+        sceneSystem.score += 10;
+        scoreText.SetText("Puntuació: " + sceneSystem.score);
     }
 
     private void CreateFlour()
@@ -240,6 +250,9 @@ public class FoodMerge : MonoBehaviour
             foodType[i] = null;
         }
         createFlour = false;
+
+        sceneSystem.score += 10;
+        scoreText.SetText("Puntuació: " + sceneSystem.score);
     }
 
     private void CreateCheese()
@@ -262,6 +275,9 @@ public class FoodMerge : MonoBehaviour
             foodType[i] = null;
         }
         createFlour = false;
+
+        sceneSystem.score += 10;
+        scoreText.SetText("Puntuació: " + sceneSystem.score);
     }
 
     private void Reset()
@@ -317,14 +333,31 @@ public class FoodMerge : MonoBehaviour
                 break;
             }
         }
-        if (allObjectivesCompleted) StartCoroutine(EndGame());
+        if (allObjectivesCompleted) StartCoroutine(ShowFinalResults());
     }
 
     private IEnumerator EndGame()
     {
-        Debug.Log("EndGame");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         sceneSystem.ChangeScene();
+    }
+
+    private IEnumerator ShowFinalResults()
+    {
+        timer.StopTimer();
+        yield return new WaitForSeconds(1);
+        if (!resultsImage.activeSelf)
+        {
+            resultsImage.SetActive(true);
+            UpdateFinalScoreText();
+            StartCoroutine(EndGame());
+        }
+    }
+
+    private void UpdateFinalScoreText()
+    {
+        sceneSystem.score += timer.timeLeft;
+        finalScoreText.SetText("Puntuació: " + sceneSystem.score);
     }
 
 }

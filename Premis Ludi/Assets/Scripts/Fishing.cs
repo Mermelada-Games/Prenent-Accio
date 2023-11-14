@@ -102,17 +102,10 @@ public class Fishing : MonoBehaviour
                 StartCoroutine(RestartDescend());
             }
         }
-        
 
         if (timer.timeOver)
         {
-            if (!image.activeSelf)
-            {
-                image.SetActive(true);
-                UpdateFinalScoreText();
-                if (hook.fishCount == 0 && hook.trashCount >= 1) gameEnded = true;
-                StartCoroutine(EndGame());
-            }
+            StartCoroutine(ShowResults());
         }
 
     }
@@ -182,8 +175,21 @@ public class Fishing : MonoBehaviour
 
     private IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(3);
         sceneSystem.ChangeScene();
+    }
+
+    private IEnumerator ShowResults()
+    {
+        timer.timeOver = false;
+        gameEnded = true;
+        yield return new WaitForSeconds(1);
+        if (!image.activeSelf)
+        {
+            image.SetActive(true);
+            UpdateFinalScoreText();
+            StartCoroutine(EndGame());
+        }
     }
 
     public void EnableDescend()

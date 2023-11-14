@@ -46,22 +46,14 @@ public class PipesManager : MonoBehaviour
             Debug.Log("You win!");
             hasWon = true;
             timer.StopTimer();
-            if (!resultsImage.activeSelf)
-            {
-                resultsImage.SetActive(true);
-                UpdateFinalScoreText();
-            }
+            StartCoroutine(ShowResults());
             StartCoroutine(EndGame());
         }
 
         if (timer.timeOver)
         {
             timer.timeOver = false;
-            if (!resultsImage.activeSelf)
-            {
-                resultsImage.SetActive(true);
-                UpdateFinalScoreText();
-            }
+            StartCoroutine(ShowResults());
             StartCoroutine(EndGame());
         }
     }
@@ -74,7 +66,17 @@ public class PipesManager : MonoBehaviour
 
     private IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         sceneSystem.ChangeScene();
+    }
+
+    private IEnumerator ShowResults()
+    {
+        yield return new WaitForSeconds(1);
+        if (!resultsImage.activeSelf)
+        {
+            resultsImage.SetActive(true);
+            UpdateFinalScoreText();
+        }
     }
 }
