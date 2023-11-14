@@ -48,10 +48,16 @@ public class SceneSystem : MonoBehaviour
         {
             currentRow = 0;
             currentCol++;
-            if (currentCol >= 3 || (currentCol >= 2 && currentRow >= 2))
+            if (currentCol >= 3)
             {
                 currentCol = 0;
             }
+        }
+        else if (currentCol >= 2 && currentRow >= 2)
+        {
+            currentRow = 0;
+            currentCol = 0;
+        
         }
 
         string sceneName = scenes[currentRow][currentCol];
