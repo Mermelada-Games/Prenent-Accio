@@ -6,11 +6,13 @@ public class PipesManager : MonoBehaviour
 {
     private Pipe[] pipes;
     private SceneSystem sceneSystem;
+     private Timer timer;
     private bool allPipesCorrect = false;
     public bool hasWon = false;
 
     private void Awake()
     {
+        timer = FindObjectOfType<Timer>();
         sceneSystem = FindObjectOfType<SceneSystem>();
         pipes = GetComponentsInChildren<Pipe>();
     }
@@ -34,6 +36,12 @@ public class PipesManager : MonoBehaviour
         {
             Debug.Log("You win!");
             hasWon = true;
+            StartCoroutine(EndGame());
+        }
+
+        if (timer.timeOver)
+        {
+            timer.timeOver = false;
             StartCoroutine(EndGame());
         }
     }
