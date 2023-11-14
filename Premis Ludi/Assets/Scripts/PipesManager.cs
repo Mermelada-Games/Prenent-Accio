@@ -58,12 +58,6 @@ public class PipesManager : MonoBehaviour
         }
     }
 
-    private void UpdateFinalScoreText()
-    {
-        sceneSystem.score += timer.timeLeft;
-        finalScoreText.SetText("Puntuació: " + sceneSystem.score);
-    }
-
     private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(4);
@@ -72,11 +66,35 @@ public class PipesManager : MonoBehaviour
 
     private IEnumerator ShowResults()
     {
+        UpdateScoreText();
         yield return new WaitForSeconds(1);
         if (!resultsImage.activeSelf)
         {
             resultsImage.SetActive(true);
             UpdateFinalScoreText();
+        }
+    }
+    private void UpdateFinalScoreText()
+    {
+        finalScoreText.SetText("Puntuació: " + sceneSystem.score);
+    }
+
+    public void UpdateScoreText()
+    {
+        int newScore = sceneSystem.score + timer.timeLeft;
+
+        StartCoroutine(UpdateScoreProgressively(sceneSystem.score, newScore, 1));
+
+        sceneSystem.score = newScore;
+    }
+
+    private IEnumerator UpdateScoreProgressively(int currentScore, int targetScore, int step)
+    {
+        while (currentScore != targetScore)
+        {
+            currentScore += step;
+            scoreText.SetText("Puntuació: " + currentScore);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }

@@ -2310,6 +2310,10 @@ PrefabInstance:
       value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 1725575175}
+    - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: milkPrefab
       value: 
       objectReference: {fileID: 912814417937227470, guid: bc3893852bcd88147a2314ab65fac6ec, type: 3}
@@ -2338,6 +2342,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
+      propertyPath: resultsImage
+      value: 
+      objectReference: {fileID: 587489706}
+    - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: waterQuantity
       value: 0
       objectReference: {fileID: 0}
@@ -2345,6 +2353,10 @@ PrefabInstance:
       propertyPath: wheatQuantity
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
+      propertyPath: finalScoreText
+      value: 
+      objectReference: {fileID: 411781991}
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: gridStartPosition.x
       value: -6
@@ -3801,6 +3813,14 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 377306293}
+    - target: {fileID: 2602035472189914522, guid: 043a9bb63b2d5e74ab743f71b10e3d47, type: 3}
+      propertyPath: objectiveBreadQuantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602035472189914522, guid: 043a9bb63b2d5e74ab743f71b10e3d47, type: 3}
+      propertyPath: objectiveCheeseQuantity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3934438688978155482, guid: 043a9bb63b2d5e74ab743f71b10e3d47, type: 3}
       propertyPath: m_Name
       value: Person
