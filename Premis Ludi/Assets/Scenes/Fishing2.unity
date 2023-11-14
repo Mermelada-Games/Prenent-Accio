@@ -4266,11 +4266,11 @@ MonoBehaviour:
   hook: {fileID: 610340624}
   background: {fileID: 459576951}
   background2: {fileID: 320168189}
-  speed: 3
+  speed: 3.7
   darkeningSpeed: 0.05
   lighteningSpeed: 0.3
-  descentSpeed: 2
-  ascentSpeed: 4
+  descentSpeed: 3
+  ascentSpeed: 5
   fishCountText: {fileID: 801224729}
   trashCountText: {fileID: 66994791}
   scoreText: {fileID: 1173261717}
