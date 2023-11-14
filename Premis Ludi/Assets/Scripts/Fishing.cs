@@ -154,7 +154,7 @@ public class Fishing : MonoBehaviour
         {
             currentScore += step;
             scoreText.SetText("Puntuació: " + currentScore);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 

@@ -226,8 +226,7 @@ public class FoodMerge : MonoBehaviour
         }
         createBread = false;
 
-        sceneSystem.score += 10;
-        scoreText.SetText("Puntuació: " + sceneSystem.score);
+        UpdateScoreText();
     }
 
     private void CreateFlour()
@@ -251,8 +250,7 @@ public class FoodMerge : MonoBehaviour
         }
         createFlour = false;
 
-        sceneSystem.score += 10;
-        scoreText.SetText("Puntuació: " + sceneSystem.score);
+        UpdateScoreText();
     }
 
     private void CreateCheese()
@@ -276,8 +274,7 @@ public class FoodMerge : MonoBehaviour
         }
         createFlour = false;
 
-        sceneSystem.score += 10;
-        scoreText.SetText("Puntuació: " + sceneSystem.score);
+        UpdateScoreText();
     }
 
     private void Reset()
@@ -333,7 +330,11 @@ public class FoodMerge : MonoBehaviour
                 break;
             }
         }
-        if (allObjectivesCompleted) StartCoroutine(ShowFinalResults());
+        if (allObjectivesCompleted) 
+        {
+            UpdateScoreText();
+            StartCoroutine(ShowFinalResults());
+        }
     }
 
     private IEnumerator EndGame()
@@ -351,6 +352,25 @@ public class FoodMerge : MonoBehaviour
             resultsImage.SetActive(true);
             UpdateFinalScoreText();
             StartCoroutine(EndGame());
+        }
+    }
+
+    public void UpdateScoreText()
+    {
+        int newScore = sceneSystem.score + 10;
+
+        StartCoroutine(UpdateScoreProgressively(sceneSystem.score, newScore, 1));
+
+        sceneSystem.score = newScore;
+    }
+
+    private IEnumerator UpdateScoreProgressively(int currentScore, int targetScore, int step)
+    {
+        while (currentScore != targetScore)
+        {
+            currentScore += step;
+            scoreText.SetText("Puntuació: " + currentScore);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
