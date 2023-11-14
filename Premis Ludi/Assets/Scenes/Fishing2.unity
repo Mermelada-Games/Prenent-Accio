@@ -563,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalTime: 30
   timeOver: 0
+  timeLeft: 0
 --- !u!114 &168437215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,7 +749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &249223833
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3335,7 +3336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68, y: 4}
+  m_AnchoredPosition: {x: 82.3, y: 25.39}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1128429530
@@ -3358,8 +3359,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "S'estima que entre 4 i 12 milions de tones de pl\xE0stic s'aboquen als
-    oceans anualment. Menjaries  peixos amb pl\xE0stic?"
+  m_text: "El canvi clim\xE0tic est\xE0 afectant els ecosistemes marins a causa de
+    l'augment de les temperatures. Quina calor... oi?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4273,6 +4274,7 @@ MonoBehaviour:
   fishCountText: {fileID: 801224729}
   trashCountText: {fileID: 66994791}
   scoreText: {fileID: 1173261717}
+  finalScoreText: {fileID: 0}
   image: {fileID: 249223832}
 --- !u!1 &1941405704
 GameObject:
