@@ -9,11 +9,13 @@ public class Person : MonoBehaviour
     private TextMeshProUGUI personText; 
     [SerializeField] private Canvas canvas;
     [SerializeField] private int objectiveBreadQuantity = 2;
+    [SerializeField] private int objectiveCheeseQuantity = 2;
 
     private float textPositionY = 0.6f;
     private float textPositionX = 2.2f;
     public bool objectiveCompleted = false;
     public int breadQuantity = 0;
+    public int cheeseQuantity = 0;
 
     void Start()
     {
@@ -23,11 +25,19 @@ public class Person : MonoBehaviour
 
     public void UpdateText()
     {
-        personText.SetText("Bread: " + breadQuantity + "/" + objectiveBreadQuantity);
+      if (objectiveBreadQuantity > 0)
+      {
+        personText.SetText( + breadQuantity + "/" + objectiveBreadQuantity);
+      }
+      else if (objectiveCheeseQuantity > 0)
+      {
+        personText.SetText( + cheeseQuantity + "/" + objectiveCheeseQuantity);
+      }
+        
     }
 
     public void Complete()
     {
-        if (breadQuantity == objectiveBreadQuantity) objectiveCompleted = true;
+        if (breadQuantity == objectiveBreadQuantity && cheeseQuantity == objectiveCheeseQuantity) objectiveCompleted = true;
     }
 }
