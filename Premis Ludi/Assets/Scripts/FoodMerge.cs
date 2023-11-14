@@ -32,9 +32,11 @@ public class FoodMerge : MonoBehaviour
     public bool[] gridPositionFree;
     private Vector3[] gridPositions;
     private Timer timer;
+    private SceneSystem sceneSystem;
 
     private void Start()
     {
+        sceneSystem = FindObjectOfType<SceneSystem>();
         timer = FindObjectOfType<Timer>();
         foodMergeObjects = GameObject.FindGameObjectsWithTag("FoodMerge");
         foodType = new string[foodMergeObjects.Length];
@@ -145,6 +147,7 @@ public class FoodMerge : MonoBehaviour
         {
             timer.timeOver = false;
             ShowResults();
+            StartCoroutine(EndGame());
         }
     }
 
@@ -308,6 +311,12 @@ public class FoodMerge : MonoBehaviour
         }
         if (allObjectivesCompleted) Debug.Log("You win!");
         else Debug.Log("You lose!");
+    }
+
+    private IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(6);
+        sceneSystem.ChangeScene();
     }
 
 }

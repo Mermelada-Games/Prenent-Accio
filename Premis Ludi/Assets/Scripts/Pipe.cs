@@ -47,23 +47,19 @@ public class Pipe : MonoBehaviour
             return;
         }
 
-        float currentRotation = NormalizeAngle(transform.eulerAngles.z);
-
-        isCorrectRotation = false;
-
-        foreach (float correctedRotation in correctRotations)
+        float currentZRotation = transform.eulerAngles.z;
+        foreach (float rotation in correctRotations)
         {
-            if (Mathf.Approximately(currentRotation, NormalizeAngle(correctedRotation)) || Mathf.Approximately(currentRotation, 360.0f))
+            float normalizedRotation = Mathf.Repeat(rotation, 360f);
+            if (Mathf.Abs(currentZRotation - normalizedRotation) < 0.1f ||
+                Mathf.Abs(currentZRotation - normalizedRotation) > 359.9f)
             {
                 isCorrectRotation = true;
-                break;
+                return;
             }
         }
 
+        isCorrectRotation = false;
     }
 
-    private float NormalizeAngle(float angle)
-    {
-        return (angle + 360.0f) % 360.0f;
-    }
 }

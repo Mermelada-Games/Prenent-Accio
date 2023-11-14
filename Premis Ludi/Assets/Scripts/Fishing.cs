@@ -109,7 +109,19 @@ public class Fishing : MonoBehaviour
 
     private IEnumerator RestartDescend()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        foreach (GameObject fish in hook.fishList)
+        {
+            Destroy(fish);
+        }
+        hook.fishList.Clear();
+
+        foreach (GameObject trash in hook.trashList)
+        {
+            Destroy(trash);
+        }
+        hook.trashList.Clear();
+        yield return new WaitForSeconds(1);
         isDescending = true;
         hook.isHooked = false;
         hasReset = false;

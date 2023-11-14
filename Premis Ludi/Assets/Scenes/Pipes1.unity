@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctRotations:
-  - 360
+  - 0
   - 180
   isCorrectRotation: 0
 --- !u!212 &354108870

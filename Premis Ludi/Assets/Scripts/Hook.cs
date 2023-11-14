@@ -7,6 +7,8 @@ public class Hook : MonoBehaviour
     [SerializeField] private GameObject hook;
     private Fishing fishing;
     private Rigidbody2D hookedObjectRb;
+    public List<GameObject> fishList = new List<GameObject>();
+    public List<GameObject> trashList = new List<GameObject>();
     public bool isHooked = false;
     public int fishCount = 0;
     public int trashCount = 0;
@@ -20,8 +22,16 @@ public class Hook : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isHooked = true;
-        if (collision.gameObject.tag == "Fish") fishCount++;
-        else if (collision.gameObject.tag == "Trash") trashCount++;
+        if (collision.gameObject.tag == "Fish") 
+        {
+            fishCount++;
+            fishList.Add(collision.gameObject);
+        }
+        else if (collision.gameObject.tag == "Trash") 
+        {
+            trashCount++;
+            trashList.Add(collision.gameObject);
+        }
 
         Rigidbody2D collidedRb = collision.GetComponent<Rigidbody2D>();
         Fish fish = collision.GetComponent<Fish>();

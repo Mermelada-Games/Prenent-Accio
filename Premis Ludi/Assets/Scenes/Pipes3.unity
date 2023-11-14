@@ -1728,6 +1728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotations:
   - 60
+  - -120
   isCorrectRotation: 0
 --- !u!212 &521877698
 SpriteRenderer:
@@ -2568,7 +2569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctRotations:
-  - 60
+  - 0
   - -180
   isCorrectRotation: 0
 --- !u!212 &781671759
@@ -2722,6 +2723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotations:
   - 180
+  - 0
   isCorrectRotation: 0
 --- !u!212 &789292964
 SpriteRenderer:
@@ -2873,7 +2875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correctRotations:
-  - 600
+  - 60
   isCorrectRotation: 0
 --- !u!212 &821510706
 SpriteRenderer:
@@ -3178,6 +3180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotations:
   - -120
+  - 60
   isCorrectRotation: 0
 --- !u!212 &910471327
 SpriteRenderer:
@@ -3633,6 +3636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotations:
   - 0
+  - 180
   isCorrectRotation: 0
 --- !u!212 &1234275760
 SpriteRenderer:
@@ -5772,6 +5776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotations:
   - -120
+  - 60
   isCorrectRotation: 0
 --- !u!212 &2033684826
 SpriteRenderer:

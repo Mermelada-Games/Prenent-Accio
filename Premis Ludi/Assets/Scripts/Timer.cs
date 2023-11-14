@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private float totalTime = 60f;
     private float currentTime;
+    private bool timerStarted = false;
     private TextMeshProUGUI timerText;
     public bool timeOver = false;
 
@@ -13,11 +14,12 @@ public class Timer : MonoBehaviour
     {
         timerText = GetComponent<TextMeshProUGUI>();
         currentTime = totalTime;
+        UpdateTimerDisplay();
     }
 
     private void Update()
     {
-        if (currentTime > 0)
+        if (timerStarted && currentTime > 0)
         {
             currentTime -= Time.deltaTime;
             UpdateTimerDisplay();
@@ -36,6 +38,13 @@ public class Timer : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         timerText.text = string.Format("{00:00}:{01:00}", minutes, seconds);
+    }
+
+    public void StartTimer()
+    {
+        currentTime = totalTime;
+        timeOver = false;
+        timerStarted = true;
     }
 
 }

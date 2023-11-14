@@ -525,6 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotations:
   - 60
+  - -120
   isCorrectRotation: 0
 --- !u!212 &354108870
 SpriteRenderer:
@@ -677,6 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctRotations:
   - -60
+  - 120
   isCorrectRotation: 0
 --- !u!212 &422597418
 SpriteRenderer:
