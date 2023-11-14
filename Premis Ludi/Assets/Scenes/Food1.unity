@@ -181,8 +181,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "S'estima que entre 4 i 12 milions de tones de pl\xE0stic s'aboquen als
-    oceans anualment. Menjaries  peixos amb pl\xE0stic?"
+  m_text: "Al 2020, es calculava que 49,5 milions de nens menors de 5 anys patien
+    desnutrici\xF3 aguda, segons les dades de la UNICEF."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
