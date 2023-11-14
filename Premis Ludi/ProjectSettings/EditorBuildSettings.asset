@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Food1.unity
     guid: f6d8641e98ae0d843b99d8f88735a64b
   - enabled: 1
-    path: Assets/Scenes/Food.unity
+    path: Assets/Scenes/Food2.unity
     guid: 19b74e20d2ed31e49b77d483065900ad
   - enabled: 1
     path: Assets/Scenes/Pipes1.unity
