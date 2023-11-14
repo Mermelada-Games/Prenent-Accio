@@ -32,7 +32,6 @@ public class Fishing : MonoBehaviour
     private Timer timer;
     private SceneSystem sceneSystem;
     private bool levelCompleted = false;
-    private int score = 0;
 
     private void Start()
     {
@@ -122,20 +121,20 @@ public class Fishing : MonoBehaviour
     {
         int newScore = hook.trashCount * 20 - hook.fishCount * 5;
 
-        if (newScore > score)
+        if (newScore > sceneSystem.score)
         {
-            StartCoroutine(UpdateScoreProgressively(score, newScore, 1));
+            StartCoroutine(UpdateScoreProgressively(sceneSystem.score, newScore, 1));
         }
-        else if (newScore < score)
+        else if (newScore < sceneSystem.score)
         {
-            StartCoroutine(UpdateScoreProgressively(score, newScore, -1));
+            StartCoroutine(UpdateScoreProgressively(sceneSystem.score, newScore, -1));
         }
-        else if (newScore == score)
+        else if (newScore == sceneSystem.score)
         {
             scoreText.SetText("Score: " + newScore);
         }
 
-        score = newScore;
+        sceneSystem.score = newScore;
     }
 
     private IEnumerator UpdateScoreProgressively(int currentScore, int targetScore, int step)

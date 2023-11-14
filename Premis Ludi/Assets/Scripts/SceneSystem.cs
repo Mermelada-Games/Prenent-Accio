@@ -8,6 +8,7 @@ public class SceneSystem : MonoBehaviour
     [SerializeField] private string[][] scenes;
     private int currentRow = 0;
     private int currentCol = 0;
+    public int score = 0;
 
     public static SceneSystem Instance;
 
