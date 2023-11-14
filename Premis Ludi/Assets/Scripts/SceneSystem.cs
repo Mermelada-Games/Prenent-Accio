@@ -44,11 +44,11 @@ public class SceneSystem : MonoBehaviour
     public void ChangeScene()
     {
         currentRow++;
-        if (currentRow >= scenes[currentRow].Length)
+        if (currentRow >= 3)
         {
             currentRow = 0;
             currentCol++;
-            if (currentCol >= scenes.Length)
+            if (currentCol >= 3)
             {
                 currentCol = 0;
             }
