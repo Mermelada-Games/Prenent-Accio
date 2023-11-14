@@ -57,4 +57,10 @@ public class SceneSystem : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void ChangeSceneIntro()
+    {
+        Debug.Log("ChangeSceneIntro");
+        SceneManager.LoadScene("Fishing1");
+    }
+
 }

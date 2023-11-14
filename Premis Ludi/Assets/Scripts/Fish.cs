@@ -9,7 +9,7 @@ public class Fish : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private float initialPosition;
-    private int direction = -1;
+    private int direction = 1;
     public bool isHooked = false;
 
     private void Start()
