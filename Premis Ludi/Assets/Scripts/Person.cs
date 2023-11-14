@@ -10,13 +10,14 @@ public class Person : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private int objectiveBreadQuantity = 2;
 
-    private float textPositionOffset = 1f;
+    private float textPositionY = 0.6f;
+    private float textPositionX = 2.2f;
     public bool objectiveCompleted = false;
     public int breadQuantity = 0;
 
     void Start()
     {
-        personText = Instantiate(personTextPrefab, new Vector3(transform.position.x, transform.position.y + textPositionOffset, 0), Quaternion.identity, canvas.transform);
+        personText = Instantiate(personTextPrefab, new Vector3(transform.position.x + textPositionX, transform.position.y + textPositionY, 0), Quaternion.identity, canvas.transform);
         UpdateText();
     }
 
