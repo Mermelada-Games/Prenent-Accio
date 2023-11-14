@@ -2092,7 +2092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: wheatQuantity
-      value: 18
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5009870750959715170, guid: 6295acc5fb5136346a704a6582a3294d, type: 3}
       propertyPath: finalScoreText
@@ -2872,7 +2872,7 @@ PrefabInstance:
       objectReference: {fileID: 377306293}
     - target: {fileID: 2602035472189914522, guid: 043a9bb63b2d5e74ab743f71b10e3d47, type: 3}
       propertyPath: objectiveBreadQuantity
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2602035472189914522, guid: 043a9bb63b2d5e74ab743f71b10e3d47, type: 3}
       propertyPath: objectiveCheeseQuantity
