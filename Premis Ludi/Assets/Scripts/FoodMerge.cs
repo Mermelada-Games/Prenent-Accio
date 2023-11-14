@@ -131,6 +131,12 @@ public class FoodMerge : MonoBehaviour
                             collider.GetComponent<Person>().UpdateText();
                             Destroy(selectedFood.gameObject);
                         }
+                        else if (selectedFood.foodType == "Cheese")
+                        {
+                            collider.GetComponent<Person>().cheeseQuantity++;
+                            collider.GetComponent<Person>().UpdateText();
+                            Destroy(selectedFood.gameObject);
+                        }
                         else Reset();
                     }
                 }
