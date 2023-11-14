@@ -339,7 +339,7 @@ public class FoodMerge : MonoBehaviour
 
     private IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         sceneSystem.ChangeScene();
     }
 
