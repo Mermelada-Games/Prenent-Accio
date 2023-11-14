@@ -22,7 +22,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] private GameObject image;
 
     private bool isDragging = false;
-    private bool isDescending = true;
+    private bool isDescending = false;
     private bool hasReset = false;
     private Material waterMaterial;
     private Material waterMaterial2;
@@ -176,4 +176,8 @@ public class Fishing : MonoBehaviour
         sceneSystem.ChangeScene();
     }
 
+    public void EnableDescend()
+    {
+        isDescending = true;
+    }
 }
