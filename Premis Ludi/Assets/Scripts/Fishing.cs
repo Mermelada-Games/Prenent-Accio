@@ -33,6 +33,8 @@ public class Fishing : MonoBehaviour
     private Timer timer;
     private SceneSystem sceneSystem;
     private bool gameEnded = false;
+    private int previousFishCount = 0;
+    private int previousTrashCount = 0;
 
     private void Start()
     {
@@ -118,7 +120,10 @@ public class Fishing : MonoBehaviour
 
     public void UpdateScoreText()
     {
-        int newScore = hook.trashCount * 20 - hook.fishCount * 5;
+        int newTrashScore = (hook.trashCount - previousTrashCount) * 20;
+        int newFishScore = (hook.fishCount - previousFishCount) * 5;
+
+        int newScore = newTrashScore - newFishScore + sceneSystem.score;
 
         if (newScore > sceneSystem.score)
         {
@@ -130,10 +135,12 @@ public class Fishing : MonoBehaviour
         }
         else if (newScore == sceneSystem.score)
         {
-            scoreText.SetText("Score: " + newScore);
+            scoreText.SetText("Puntuació: " + newScore);
         }
 
         sceneSystem.score = newScore;
+        previousTrashCount = hook.trashCount;
+        previousFishCount = hook.fishCount;
     }
 
     private void UpdateFinalScoreText()
@@ -146,7 +153,7 @@ public class Fishing : MonoBehaviour
         while (currentScore != targetScore)
         {
             currentScore += step;
-            scoreText.SetText("Score: " + currentScore);
+            scoreText.SetText("Puntuació: " + currentScore);
             yield return new WaitForSeconds(0.1f);
         }
     }
