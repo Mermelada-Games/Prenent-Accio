@@ -2323,8 +2323,8 @@ MonoBehaviour:
   speed: 3
   darkeningSpeed: 0.05
   lighteningSpeed: 0.3
-  descentSpeed: 1
-  ascentSpeed: 3
+  descentSpeed: 2
+  ascentSpeed: 4
   fishCountText: {fileID: 801224729}
   trashCountText: {fileID: 66994791}
   scoreText: {fileID: 1173261717}
