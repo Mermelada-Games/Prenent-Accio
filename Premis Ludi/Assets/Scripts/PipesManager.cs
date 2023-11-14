@@ -60,7 +60,7 @@ public class PipesManager : MonoBehaviour
 
     private IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         sceneSystem.ChangeScene();
     }
 

@@ -120,7 +120,7 @@ public class Fishing : MonoBehaviour
 
     public void UpdateScoreText()
     {
-        int newTrashScore = (hook.trashCount - previousTrashCount) * 20;
+        int newTrashScore = (hook.trashCount - previousTrashCount) * 10;
         int newFishScore = (hook.fishCount - previousFishCount) * 5;
 
         int newScore = newTrashScore - newFishScore + sceneSystem.score;
@@ -182,7 +182,7 @@ public class Fishing : MonoBehaviour
 
     private IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         sceneSystem.ChangeScene();
     }
 

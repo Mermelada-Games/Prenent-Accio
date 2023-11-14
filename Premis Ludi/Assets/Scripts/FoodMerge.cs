@@ -136,12 +136,14 @@ public class FoodMerge : MonoBehaviour
                         {
                             collider.GetComponent<Person>().breadQuantity++;
                             collider.GetComponent<Person>().UpdateText();
+                            Reset();
                             Destroy(selectedFood.gameObject);
                         }
                         else if (selectedFood.foodType == "Cheese")
                         {
                             collider.GetComponent<Person>().cheeseQuantity++;
                             collider.GetComponent<Person>().UpdateText();
+                            Reset();
                             Destroy(selectedFood.gameObject);
                         }
                         else Reset();
@@ -339,7 +341,7 @@ public class FoodMerge : MonoBehaviour
 
     private IEnumerator EndGame()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         sceneSystem.ChangeScene();
     }
 
