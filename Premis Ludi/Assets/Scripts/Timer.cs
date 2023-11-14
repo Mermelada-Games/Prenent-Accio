@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     private bool timerStarted = false;
     private TextMeshProUGUI timerText;
     public bool timeOver = false;
+    public int timeLeft = 0;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class Timer : MonoBehaviour
             currentTime -= Time.deltaTime;
             UpdateTimerDisplay();
         }
+        timeLeft = (int)currentTime;
     }
 
     private void UpdateTimerDisplay()
@@ -45,6 +47,11 @@ public class Timer : MonoBehaviour
         currentTime = totalTime;
         timeOver = false;
         timerStarted = true;
+    }
+
+    public void StopTimer()
+    {
+        timerStarted = false;
     }
 
 }
