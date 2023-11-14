@@ -37,7 +37,7 @@ public class SceneSystem : MonoBehaviour
         {
             new string[] { "Fishing1", "Fishing2", "Fishing3" },
             new string[] { "Pipes1", "Pipes2", "Pipes3" },
-            new string[] { "Food1", "Food2", "Food3" }
+            new string[] { "Food1", "Food2"}
         };
     }
 
@@ -48,7 +48,7 @@ public class SceneSystem : MonoBehaviour
         {
             currentRow = 0;
             currentCol++;
-            if (currentCol >= 3)
+            if (currentCol >= 3 || (currentCol >= 2 && currentRow >= 2))
             {
                 currentCol = 0;
             }
